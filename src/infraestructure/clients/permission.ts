@@ -1,5 +1,5 @@
 import { ClientOptions, Transport } from '@nestjs/microservices';
-import { resolve } from 'path';
+import { join, resolve } from 'path';
 import {
   FindAllRequest,
   FindAllResponse,
@@ -18,7 +18,7 @@ export const permissionGrpcClientOptions: ClientOptions = {
   transport: Transport.GRPC,
   options: {
     package: 'permission',
-    protoPath: resolve('src/infraestructure/proto/permission.proto'),
+    protoPath: join(__dirname, '..','/proto/permission.proto'),
     url: process.env.GRPC_PERMISSION_URL,
     gracefulShutdown: true,
     credentials,

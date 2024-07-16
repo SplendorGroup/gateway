@@ -1,5 +1,5 @@
 import { ClientOptions, Transport } from '@nestjs/microservices';
-import { resolve } from 'path';
+import { join, resolve } from 'path';
 import {
   FindAllRequest,
   FindAllResponse,
@@ -21,7 +21,7 @@ export const roleGrpcClientOptions: ClientOptions = {
   transport: Transport.GRPC,
   options: {
     package: 'role',
-    protoPath: resolve('src/infraestructure/proto/role.proto'),
+    protoPath: join(__dirname, '..','/proto/role.proto'),
     url: process.env.GRPC_ROLE_URL,
     gracefulShutdown: true,
     credentials,

@@ -1,5 +1,5 @@
 import { ClientOptions, Transport } from '@nestjs/microservices';
-import { resolve } from 'path';
+import { join } from 'path';
 import { VehicleIdRequest, VehicleRequest, VehicleResponse, VehiclesFindAllResponse } from './types/vehicle';
 import { credentials } from '../config/grpc';
 import 'dotenv/config';
@@ -8,7 +8,7 @@ export const vehiclesGrpcClientOptions: ClientOptions = {
   transport: Transport.GRPC,
   options: {
     package: 'vehicle',
-    protoPath: resolve('src/infraestructure/proto/vehicle.proto'),
+    protoPath: join(__dirname, '..','/proto/vehicle.proto'),
     url: process.env.GRPC_VEHICLE_URL,
     gracefulShutdown: true,
     credentials,

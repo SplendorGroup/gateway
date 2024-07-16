@@ -1,5 +1,5 @@
 import { ClientOptions, Transport } from '@nestjs/microservices';
-import { resolve } from 'path';
+import { join } from 'path';
 import { ColorIdRequest, ColorRequest, ColorResponse, ColorsFindAllResponse } from './types/color';
 import { credentials } from '../config/grpc'
 import 'dotenv/config';
@@ -8,7 +8,7 @@ export const colorGrpcClientOptions: ClientOptions = {
   transport: Transport.GRPC,
   options: {
     package: 'color',
-    protoPath: resolve('src/infraestructure/proto/color.proto'),
+    protoPath: join(__dirname, '..','/proto/color.proto'),
     url: process.env.GRPC_COLOR_URL,
     gracefulShutdown: true,
     credentials,

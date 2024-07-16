@@ -1,3 +1,5 @@
+import { AuthUser } from "./user";
+
 export interface LoginDTO {
   email: string;
   password: string;
@@ -77,3 +79,12 @@ export interface ConfirmEmailRequest {
 }
 
 export interface ConfirmEmailResponse {}
+
+export interface VerifyAccessTokenDTO {
+  access_token: string
+}
+
+export interface VerifyAccessTokenRequest {
+  body: VerifyAccessTokenDTO,
+  user?: AuthUser
+}

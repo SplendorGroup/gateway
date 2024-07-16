@@ -31,7 +31,7 @@ function extractParams(path: string, routePath: string): Record<string, string> 
   return params;
 }
 
-const GrpcParamsFromRequest = createParamDecorator(
+const ParamsFromRequest = createParamDecorator(
   (data: unknown, ctx: ExecutionContext): Record<string, any> => {
     const request: Request = ctx.switchToHttp().getRequest();
     const routes: Route[] = GrpcRoutesModule.getRoutes();
@@ -50,4 +50,4 @@ const GrpcParamsFromRequest = createParamDecorator(
   },
 );
 
-export { GrpcParamsFromRequest };
+export { ParamsFromRequest };
